@@ -36,4 +36,9 @@ abstract class AbstractController implements IController
 		$layout = Layout::getInstance();
 		$this->layout = $layout->setLayoutPath($layoutPath);
 	}
+	
+	public function escape($var)
+	{
+		return htmlentities($var, ENT_QUOTES);
+	}
 }

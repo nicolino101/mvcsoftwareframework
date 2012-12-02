@@ -1,26 +1,35 @@
 <html>
+
+<head>
+
+<?php echo $this->jsFiles; ?>
+
+<?php echo $this->cssFiles; ?>
+
+</head>
+
 <body>
 
-<h1><?php echo $this->title; ?></h1>
+<h1><?php echo $this->escape($this->title); ?></h1>
 
-<h3><?php echo $this->test; ?></h3>
+<h3><?php echo $this->escape($this->test); ?></h3>
 
 <?php
 foreach($this->result as $row)
 {
 	echo '<p>';
-	echo htmlentities($row->getTalentnum(), ENT_QUOTES);
+	echo $this->escape($row->getTalentnum());
 	echo '<br />';
-	echo $row->getFname();
+	echo $this->escape($row->getFname());
 	echo '<br />';
-	echo $row->getLname();
+	echo $this->escape($row->getLname());
 	echo '</p>';
 }
 ?>
 
-<div style="border:1px solid black; width:450px;height:100px;">
+<div class="widget" id="w1">
 <?php echo $this->w1->render('w1'); ?>
-</p>
+</div>
 
 </body>
 </html>

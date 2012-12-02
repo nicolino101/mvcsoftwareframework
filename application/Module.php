@@ -25,7 +25,7 @@ class Module extends AbstractServiceManager
 						'driver'    => 'pdo',
 						'dsn'       => 'mysql:host=localhost;dbname=bam',
 						'username'  => 'root',
-						'password'  => 'your password',
+						'password'  => '031866YuP',
 						'driver_options' => array(
 								\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
 						)
@@ -37,7 +37,7 @@ class Module extends AbstractServiceManager
 		    		'driver'    => 'pdo',
 		    		'dsn'       => 'mysql:host=localhost;dbname=exploretale',
 		    		'username'  => 'root',
-		    		'password'  => 'your password',
+		    		'password'  => '031866YuP',
 		    		'driver_options' => array(
 		    				\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
 		    		)

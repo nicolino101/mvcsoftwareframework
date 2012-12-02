@@ -1,6 +1,8 @@
 <?php namespace mvcs\View;
 
-class ViewModel 
+use Mvcs\View\AbstractView;
+
+class ViewModel extends AbstractView
 {
 	protected $jsFiles = null;
 	
@@ -22,12 +24,12 @@ class ViewModel
 		$this->$prop = $value;
 	}
 	
-	public function appendJsFile($file)
+	public function addJsFile($file)
 	{
 		$this->jsFiles .= '<script src="'.$file.'"></script>'."\n";
 	}
 	
-	public function appendCssFile($file)
+	public function addCssFile($file)
 	{
 		$this->cssFiles .= '<link rel="stylesheet" type="text/css" href="'.$file.'">'."\n";
 	}
@@ -40,5 +42,10 @@ class ViewModel
 		}
 	
 		require_once VIEW_PATH.'/'.$view.'.php';
+	}
+	
+	public function escape($var)
+	{
+		return htmlentities($var, ENT_QUOTES);
 	}
 }
