@@ -30,8 +30,8 @@ class IndexController extends AbstractController
 		$result = $model->mapper->fetchAll('talentnum >= '.$talentnum, 1);
 		
 		$userview = new ViewModel(array(		
-				'title' => "User Table",
-				'talentnum' => $talentnum,
+				'title' => $this->escape("User Table"),
+				'talentnum' => $this->escape($talentnum),
 				'result' => $result
 		    )
 		);
@@ -48,8 +48,8 @@ class IndexController extends AbstractController
 		$result = $model->mapper->fetchAll('talentnum >= '.$talentnum, 1);
 		
 		$userinfoview = new ViewModel(array(		
-				'title' => 'UserInfo Table',
-				'talentnum' => $talentnum,
+				'title' => $this->escape('UserInfo Table'),
+				'talentnum' => $this->escape($talentnum),
 				'result' => $result
 		    )
 		);
@@ -66,8 +66,8 @@ class IndexController extends AbstractController
 		$result = $model->mapper->fetchAll('talentnum >= '.$talentnum, 1);
 	
 		$userinfo2view = new ViewModel(array(	
-				'title' => 'UserInfo2 Table',
-				'talentnum' => $talentnum,
+				'title' => $this->escape('UserInfo2 Table'),
+				'talentnum' => $this->escape($talentnum),
 				'result' => $result
 		    )
 		);

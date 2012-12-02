@@ -39,6 +39,12 @@ abstract class AbstractController implements IController
 	
 	public function escape($var)
 	{
+		// donot affect arrays or objects
+		if(is_array($var) || is_object($var))
+		{
+			return $var;
+		}
+		
 		return htmlentities($var, ENT_QUOTES);
 	}
 }

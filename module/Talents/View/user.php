@@ -18,7 +18,7 @@ foreach($this->result as $row)
 			{
 				echo '<tr>';
 				echo '<td>'.str_replace('*', '', $key).'</td>';
-				echo '<td class="value">'.$val.'</td>';
+				echo '<td class="value">'.$this->escape($val).'</td>';
 	            echo '</td>';
 	            echo '</tr>';
 			}
