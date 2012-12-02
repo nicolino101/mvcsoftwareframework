@@ -3,7 +3,6 @@
 use Mvcs\Controller\IController;
 use Mvcs\ServiceManager;
 use Mvcs\Request\Request;
-use Mvcs\Layout\Layout;
 
 abstract class AbstractController implements IController
 {
@@ -29,12 +28,6 @@ abstract class AbstractController implements IController
 		
 		if($method == 'getRequest')
 		    return $this->request;
-	}
-	
-	public function setLayout($layoutPath)
-	{  
-		$layout = Layout::getInstance();
-		$this->layout = $layout->setLayoutPath($layoutPath);
 	}
 	
 	public function escape($var)
