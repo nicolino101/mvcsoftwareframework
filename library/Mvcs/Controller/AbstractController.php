@@ -1,11 +1,9 @@
 <?php namespace Mvcs\Controller;
 
-use Mvcs\View\View;
 use Mvcs\Controller\IController;
 use Mvcs\ServiceManager;
 use Mvcs\Request\Request;
 use Mvcs\Layout\Layout;
-use Mvcs\Renderer\PhpRenderer;
 
 abstract class AbstractController implements IController
 {
@@ -37,12 +35,5 @@ abstract class AbstractController implements IController
 	{  
 		$layout = Layout::getInstance();
 		$this->layout = $layout->setLayoutPath($layoutPath);
-	}
-	
-	public function render(View $view)
-	{
-		$renderer = new PhpRenderer();
-		
-		$renderer->renderViewLayout($view);
 	}
 }

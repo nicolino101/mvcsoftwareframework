@@ -1,12 +1,12 @@
 <html>
 <body>
 
-<h1><?php echo $title; ?></h1>
+<h1><?php echo $this->title; ?></h1>
 
-<h3><?php echo $test; ?></h3>
+<h3><?php echo $this->test; ?></h3>
 
 <?php
-foreach($result as $row)
+foreach($this->result as $row)
 {
 	echo '<p>';
 	echo htmlentities($row->getTalentnum(), ENT_QUOTES);
@@ -17,6 +17,10 @@ foreach($result as $row)
 	echo '</p>';
 }
 ?>
+
+<div style="border:1px solid black; width:450px;height:100px;">
+<?php echo $this->w1->render('w1'); ?>
+</p>
 
 </body>
 </html>
