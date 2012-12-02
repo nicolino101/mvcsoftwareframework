@@ -1,11 +1,11 @@
 <div class="middle" >
 
-<h1><?php echo $title; ?></h1>
+<h1><?php echo $this->title; ?></h1>
 
-<h3><?php echo $talentnum; ?></h3>
+<h3><?php echo $this->talentnum; ?></h3>
 
 <?php
-foreach($result as $row)
+foreach($this->result as $row)
 {
 	if(is_object($row))
 	{  	

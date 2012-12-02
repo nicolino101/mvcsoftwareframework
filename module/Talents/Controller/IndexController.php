@@ -3,7 +3,7 @@
 use Mvcs\Adapter\PdoAdapter;
 
 use Mvcs\Controller\AbstractController;
-use Mvcs\View\View;
+use Mvcs\View\ViewModel;
 use Mvcs\Layout\Layout;
 
 class IndexController extends AbstractController
@@ -12,20 +12,13 @@ class IndexController extends AbstractController
 	
 	public function init() 
 	{
-		$this->setLayout(LAYOUT_PATH.'/default.php');
-		
-		//var_dump($this); exit;
-		//$this->view->headScript()->appendFile('/js/search/search.js');
 		
 	}
 	
 	public function indexAction()
 	{
-		$this->header();
-		$this->userAction(); 
-		$this->userinfoAction();
-		$this->userinfo2Action();
-		$this->footer();
+		$view = new ViewModel(array('title' => __METHOD__));
+		$view->render('index');
 	}
 	
 	public function userAction()
@@ -36,16 +29,14 @@ class IndexController extends AbstractController
 		
 		$result = $model->mapper->fetchAll('talentnum >= '.$talentnum, 1);
 		
-		//$view = new View('parent');
-		
-		$userview = new View(array(
-				'view_path' => 'user',
+		$userview = new ViewModel(array(		
 				'title' => "User Table",
-				//'talentnum' => $id,
 				'talentnum' => $talentnum,
 				'result' => $result
 		    )
 		);
+		
+		$userview->render('user');
 	}
 
 	public function userinfoAction()
@@ -56,14 +47,13 @@ class IndexController extends AbstractController
 		
 		$result = $model->mapper->fetchAll('talentnum >= '.$talentnum, 1);
 		
-		$userinfoview = new View(array(
-				'view_path' => 'userinfo',
+		$userinfoview = new ViewModel(array(		
 				'title' => 'UserInfo Table',
 				'talentnum' => $talentnum,
 				'result' => $result
 		    )
 		);
-		
+		$userinfoview->render('userinfo');
 	}
 	
 	public function userinfo2Action()
@@ -75,18 +65,18 @@ class IndexController extends AbstractController
 	
 		$result = $model->mapper->fetchAll('talentnum >= '.$talentnum, 1);
 	
-		$userinfo2view = new View(array(
-				'view_path' => 'userinfo2',
+		$userinfo2view = new ViewModel(array(	
 				'title' => 'UserInfo2 Table',
 				'talentnum' => $talentnum,
 				'result' => $result
 		    )
 		);
+		$userinfo2view->render('userinfo2');
 	}
 	
 	public function header()
 	{
-		$headerview = new View(array(
+		$headerview = new ViewModel(array(
 				'view_path' => LAYOUT_PATH.'/header',
 		    )
 		);
