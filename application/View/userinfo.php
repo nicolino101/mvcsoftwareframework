@@ -2,7 +2,7 @@
 
 <h1><?php echo $this->escape($this->title); ?></h1>
 
-<h3><?php echo $this->escape($this->talentnum); ?></h3>
+<h3><?php echo $this->escape($this->userid); ?></h3>
 
 <?php
 foreach($this->result as $row)

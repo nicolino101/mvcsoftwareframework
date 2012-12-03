@@ -18,14 +18,13 @@ class IndexController extends AbstractController
 		exit;
 	}
 	
-	// mvcs/application/index/user or with application only
-	// http://mvcs/index/user
+	//test: http://mvcs/application/index/user
 	public function userAction()
 	{
 		$model = $this->sm->get('user');
 
-		$result = $model->mapper->fetchAll('talentnum > 145198 LIMIT 10');
-
+		$result = $model->mapper->fetchAll('userid > 0 LIMIT 10');
+         var_dump($result); exit;
 		// must use $this->w1->render('w1'); in this view
 		$w1 = new ViewModel(array('title' => 'Widget1', 'message' => __METHOD__));
 		
@@ -43,19 +42,18 @@ class IndexController extends AbstractController
 		$view->render('user');
 	}
 
-	// mvcs/application/index/userinfo or with application only
-	// http://mvcs/index/userinfo
-	public function userinfoAction()
+	// http://mvcs/index/address
+	public function addressAction()
 	{
-		$talentnum = 145198;
+		$userid = 2;
 		
-		$model = $this->sm->get('userinfo');
+		$model = $this->sm->get('address');
 
-		$result = $model->mapper->fetchAll('talentnum = '.$talentnum);
+		$result = $model->mapper->fetchAll('userid = '.$userid);
 		
 		$view = new ViewModel(array(
 				'title' => 'My Title',
-				'talentnum' => $this->escape($talentnum),
+				'userid' => $this->escape($userid),
 				'test' => $this->escape($this->getRequest()->getParam('test')),
 				'result' => $result
 		    )
@@ -65,12 +63,7 @@ class IndexController extends AbstractController
 	
 	public function testAction()
 	{
-		$model = new \Application\Model\UserInfoModel(new \Application\Mapper\UserInfoMapper($this->sm->get('localhost')));
-		
-		$result = $model->mapper->fetchAll('talentnum =  145198');
-		
-		var_dump($result);
-		
+		echo __METHOD__;
 		exit;
 	}
 }

@@ -4,5 +4,5 @@ use Mvcs\Mapper\AbstractMapper;
 
 class UserMapper extends AbstractMapper
 {
-	protected $dbTable = 'talentci';
+	protected $dbTable = 'user';
 }

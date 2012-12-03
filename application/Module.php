@@ -2,8 +2,8 @@
 
 use Application\Mapper\UserMapper;
 use Application\Model\UserModel;
-use Application\Mapper\UserInfoMapper;
-use Application\Model\UserInfoModel;
+use Application\Mapper\AddressMapper;
+use Application\Model\AddressModel;
 use Mvcs\Db\Adapter\PdoAdapter;
 use Mvcs\ServiceManager\AbstractServiceManager;
 
@@ -21,7 +21,7 @@ class Module extends AbstractServiceManager
 			'localhost' => function() {
 				$options = array(
 						'driver'    => 'pdo',
-						'dsn'       => 'mysql:host=localhost;dbname=bam',
+						'dsn'       => 'mysql:host=localhost;dbname=mvcs',
 						'username'  => 'root',
 						'password'  => '031866YuP',
 						'driver_options' => array(
@@ -33,7 +33,7 @@ class Module extends AbstractServiceManager
 		    'exploretalent' => function() {
 		        $options = array(
 		    		'driver'    => 'pdo',
-		    		'dsn'       => 'mysql:host=localhost;dbname=exploretale',
+		    		'dsn'       => 'mysql:host=localhost;dbname=mvcs',
 		    		'username'  => 'root',
 		    		'password'  => '031866YuP',
 		    		'driver_options' => array(
@@ -44,11 +44,11 @@ class Module extends AbstractServiceManager
 		    },
 		    'user' => function() {
 				$mapper = new UserMapper($this->get('localhost'));
-				return new UserModel($mapper);
+				return new \User\Model\UserModel($mapper);
 		    },
-		    'userinfo' => function() {
-		        $mapper = new UserInfoMapper($this->get('localhost'));
-		        return new UserInfoModel($mapper);
+		    'address' => function() {
+		        $mapper = new AddressMapper($this->get('localhost'));
+		        return new \User\Model\AddressModel($mapper);
 		    },
 		);
 	
