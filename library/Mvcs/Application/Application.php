@@ -49,6 +49,7 @@ class Application
 		$this->params = $this->getRequest()->getParams();
 	}
 	
+	//@todo add bootstrap and access to bootstrap functions
 	public function bootstrap()
 	{
 		$this->setOptions();
