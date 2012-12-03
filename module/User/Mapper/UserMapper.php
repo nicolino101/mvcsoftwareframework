@@ -6,6 +6,7 @@ class UserMapper extends AbstractMapper
 {
 	protected $dbTable = 'user';
 	
+	// overriding the AbstractMapper
 	public function fetchAll($where, $limit = null)
 	{
 		$stmt = $this->db

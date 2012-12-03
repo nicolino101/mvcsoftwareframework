@@ -18,6 +18,9 @@ class UserModel extends AbstractModel
     protected $created = null;
 
     protected $modified = null;
+    
+    //association table
+    protected $address;
 
 	public function __construct(IMapper $mapper)
 	{

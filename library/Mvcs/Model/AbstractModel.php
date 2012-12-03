@@ -54,4 +54,22 @@ abstract class AbstractModel implements IModel
 		 
 		return $this;
 	}
+	
+	public function getProperties($object)
+	{
+		$array = array();
+			
+		$reflection = new \ReflectionObject($object);
+			
+		foreach($reflection->getProperties() as $property)
+		{
+			$property->setAccessible(TRUE);
+	
+			$key [$property->getName()]= $property->getName();
+		}
+			
+		unset($key['mapper']);
+		
+		return $key;
+	}
 }

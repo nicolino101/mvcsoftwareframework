@@ -19,6 +19,7 @@ class IndexController extends AbstractController
 	}
 	
 	//test: http://mvcs/application/index/user
+	//  or: http://mvcs/index/user
 	public function userAction()
 	{
 		$model = $this->sm->get('user');

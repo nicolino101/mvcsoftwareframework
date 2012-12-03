@@ -14,11 +14,33 @@ class IndexController extends AbstractController
 		
 	}
 	
-	//test: http://mvcs/user/index/index
+	//test: http://mvcs/user/index/index/userid/1
+	/**
+	 * This shows how to use table relations using objects 
+	 */
 	public function indexAction()
 	{
-		$view = new ViewModel(array('title' => __METHOD__));
-		$view->render('index');
+		$userid = $this->getRequest()->getParam('userid');
+		
+		$model = $this->sm->get('user');
+		
+		$result = $model->mapper->fetchAll('userid >= '.$userid);
+		
+		$addressmodel = $this->sm->get('address');
+		
+		foreach($result as $key=>$row)
+		{		
+			$result[$key]->address = $addressmodel->mapper->fetchAll('userid = '.$row->getUserid());
+		}
+		
+		$userview = new ViewModel(array(		
+				'title' => $this->escape("User Table"),
+				'userid' => $this->escape($userid),
+				'result' => $result
+		    )
+		);
+		
+		$userview->render('user');
 	}
 	
 	// test: http://mvcs/user/index/user/userid/1
