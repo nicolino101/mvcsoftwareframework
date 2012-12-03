@@ -24,7 +24,7 @@ class IndexController extends AbstractController
 		$model = $this->sm->get('user');
 
 		$result = $model->mapper->fetchAll('userid > 0 LIMIT 10');
-         var_dump($result); exit;
+         
 		// must use $this->w1->render('w1'); in this view
 		$w1 = new ViewModel(array('title' => 'Widget1', 'message' => __METHOD__));
 		
@@ -58,7 +58,7 @@ class IndexController extends AbstractController
 				'result' => $result
 		    )
 		);
-		$view->render('userinfo');
+		$view->render('address');
 	}
 	
 	public function testAction()

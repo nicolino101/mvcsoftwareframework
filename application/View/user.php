@@ -18,11 +18,11 @@
 foreach($this->result as $row)
 {
 	echo '<p>';
-	echo $this->escape($row->getTalentnum());
+	echo $this->escape($row->getUserid());
 	echo '<br />';
-	echo $this->escape($row->getFname());
+	echo $this->escape($row->getFirstname()).' '.$this->escape($row->getLastname());
 	echo '<br />';
-	echo $this->escape($row->getLname());
+	echo $this->escape($row->getCreated());
 	echo '</p>';
 }
 ?>
