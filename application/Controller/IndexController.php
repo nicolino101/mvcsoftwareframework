@@ -1,29 +1,32 @@
 <?php namespace Application\Controller;
 
 use Mvcs\Controller\AbstractController;
-use Mvcs\View\View;
 use Mvcs\View\ViewModel;
 
 class IndexController extends AbstractController
 {
+	//init() is called automatically first
 	public function init() 
 	{
-		//echo __METHOD__;
+		echo __METHOD__.'<br />';
 	}
 	
+	// indexAction is the default Action called http://mvcs
 	public function indexAction()
 	{
 		echo __METHOD__;
 		exit;
 	}
 	
+	// mvcs/application/index/user or with application only
+	// http://mvcs/index/user
 	public function userAction()
 	{
 		$model = $this->sm->get('user');
 
 		$result = $model->mapper->fetchAll('talentnum > 145198 LIMIT 10');
 
-		// must use $this->w1->render('w1'); in view
+		// must use $this->w1->render('w1'); in this view
 		$w1 = new ViewModel(array('title' => 'Widget1', 'message' => __METHOD__));
 		
 		$view = new ViewModel(array(
@@ -40,6 +43,8 @@ class IndexController extends AbstractController
 		$view->render('user');
 	}
 
+	// mvcs/application/index/userinfo or with application only
+	// http://mvcs/index/userinfo
 	public function userinfoAction()
 	{
 		$talentnum = 145198;
