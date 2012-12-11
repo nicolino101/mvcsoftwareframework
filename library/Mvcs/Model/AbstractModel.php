@@ -55,8 +55,10 @@ abstract class AbstractModel implements IModel
 		return $this;
 	}
 	
-	public function getProperties($object)
+	public function getProperties($object = null)
 	{
+		$object = ($object != null) ? $object : $this;
+		
 		$array = array();
 			
 		$reflection = new \ReflectionObject($object);
